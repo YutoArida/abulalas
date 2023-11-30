@@ -169,7 +169,7 @@
                                                     <table id="myOfficialTable" class="table table-striped" style="text-align:center;">
                                                         <thead>
                                                             <tr>
-                                                              <th scope="col">#</th> 
+                                                                <th scope="col">#</th> 
                                                                 <th scope="col">QR</th>
                                                                 <th scope="col">LRN</th>
                                                                 <th scope="col">GRADE</th>
@@ -183,11 +183,12 @@
                                                                 $schoolStudents = $portCont->getReEnrollmentStudent();
                                                                 if (!empty($schoolStudents)) {
                                                                     foreach ($schoolStudents as $key => $value) {   
-
+                                                                        $uid = $schoolStudents[$key]['uid'];
+                                                                        $qrtobegenerated = 'https://chart.googleapis.com/chart?chs=50x50&cht=qr&chl=' . urlencode($uid); 
                                                             ?>
                                                             <tr>
                                                                 <td><?php echo $schoolStudents[$key]['rid']; ?></td>
-                                                                <th scope="row"><?php echo $schoolStudents[$key]['uid']; ?></th>
+                                                                <td><img src='<?php echo $qrtobegenerated; ?>' alt='QR Code'></td>
                                                                 <td><?php echo $schoolStudents[$key]['uid']; ?></td>
                                                                 <td><?php echo $schoolStudents[$key]['grade']; ?></td>
                                                                 <td><?php echo $schoolStudents[$key]['section_name']; ?></td>
